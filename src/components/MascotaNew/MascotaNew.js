@@ -3,7 +3,7 @@ import { useForm } from '../../hooks/useForm';
 import { Container, BoxCreate, Input, Form, TextArea, Select, FileSelector } from './styles'
 
 import { useDispatch, useSelector } from 'react-redux';
-import { petAdd } from '../../actions/pets';
+import { petAdd, startUploading } from '../../actions/pets';
 import { CustomModal } from '../ModalAlert/ModalAlert';
 
 import { AddCircle } from '@styled-icons/fluentui-system-filled/AddCircle'
@@ -11,6 +11,8 @@ import { AddCircle } from '@styled-icons/fluentui-system-filled/AddCircle'
 export const MascotaNew = () => {
 
   const [showModal, setShowModal] = useState(false);
+
+  const { active } = useSelector( state => state.pets)
 
   const hideModal = () => {
     setShowModal(false)
@@ -31,12 +33,15 @@ export const MascotaNew = () => {
   
   const handleCreateNew = (e) => {
     e.preventDefault();
-   
-    // dispatch( petAdd(name,
-    //                 age, 
-    //                 image_url,
-    //                 description,
-    //                 pet_type_id) );
+
+    const img = (active.url) ? active.url : 'imageUrl'; 
+    
+
+    dispatch( petAdd(name,
+                    age, 
+                    img,
+                    description,
+                    pet_type_id) );
     // msg alert
     setShowModal( !showModal );
   }
@@ -46,7 +51,13 @@ export const MascotaNew = () => {
   }
 
   const handleFileChange = (e) => {
-    // e.target.files
+    const file = e.target.files[0];
+     
+    if ( file ) {
+      dispatch( startUploading(file) )
+      
+      
+    }
   }
 
 
@@ -103,16 +114,28 @@ export const MascotaNew = () => {
                  type="file"
                  name='file'
                  style={{ display:'none'}}
-                 onChange={ handleFileChange}
+                 onChange={ handleFileChange }
           />
           <FileSelector 
-            width="100%"
-            onClick={()=> handlePictureClick() }
-          >
-            <div>
-              <AddCircle width={20} height={20} color={ '#bcb9b9' } />
-              <p>Agrega una imagen de tu mascota</p>
-            </div>
+            
+            onClick={()=> handlePictureClick() } 
+          >   
+              {
+                (active?.url) 
+                ?
+                <img src={`${active.url}`} alt='Pet image'
+                  height={180}
+                ></img>
+                :
+                <div>                
+                  <p>
+                    <AddCircle width={20} height={20} color={ '#bcb9b9' } />
+                    Agrega una imagen de tu mascota
+                  </p>
+                </div>
+              }              
+              
+            
           </FileSelector>
           <button
             type='submit' >

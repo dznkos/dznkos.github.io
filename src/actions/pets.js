@@ -1,4 +1,5 @@
 import { fetchConToken } from "../api/fetch"
+import { fileUpload } from "../helpers/imageUpload";
 import { types } from "../types/types"
 
 
@@ -26,7 +27,6 @@ export const petAdd = ( name,
 
       const body = await resp.json();
     
-
       console.log(body)
 
     } catch (error) {
@@ -110,6 +110,7 @@ const petList = () => ({
 
 
 
+
 export const petDelete = ( id ) => {
 
   return async(dispatch) => {
@@ -124,6 +125,23 @@ export const petDelete = ( id ) => {
     //   const pets = body.pets      
     // }
     
+  }
+}
+
+const petLoadImage = ( url ) => ({
+  type: types.petLoadImage,
+  payload: url
+})
+
+export const startUploading = ( file ) => {
+  return async( dispatch )=>{
+    // const { active: activePet} = getState().pets;
+
+    const fileUrl = await fileUpload( file );
+
+    dispatch( petLoadImage(fileUrl));
+    
+    console.log( fileUrl )
   }
 }
 

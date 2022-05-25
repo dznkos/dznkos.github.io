@@ -18,6 +18,15 @@ export const petReducer = ( state = initialState, action ) => {
         active: null
       }
 
+    case types.petLoadImage:
+      return {
+        ...state,
+        active: {
+          ...
+          { url: action.payload }
+        }
+      }
+
     case types.petLoaded:
       return {
         ...state,

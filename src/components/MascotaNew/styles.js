@@ -179,16 +179,17 @@ export const BoxCreate = styled.div`
 `
 
 export const FileSelector = styled.div`
-
-    width: 100%;
+    width: auto;
     height: 100%;
-    max-height:100px;
-  
-    border: 2.2px solid #E3E3E3;
-    background: #FFFFFF;
-    border-style: dashed;
+    max-height:180px;
 
+    display: flex;
+  
     div {
+      width: 100%;
+      border: 2.2px solid #E3E3E3;
+      background: #FFFFFF;
+      border-style: dashed;
       height: 100%;
       display: flex;
 

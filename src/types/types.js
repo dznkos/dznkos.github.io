@@ -19,6 +19,8 @@ export const types = {
   petUpdate: '[pet] Update pet',
   petLoaded: '[pet] Loaded',
 
+  petLoadImage: '[pet] Load Image',
+
   petClearActive: '[pet] Clear Active',
 
 

@@ -28,7 +28,7 @@ export const MascotaScreen = () => {
     setShowModal( { petid: id, show: true } );
 
   }
-  const deletePet = ( ) => {
+  const deletePet = () => {
     dispatch( petDelete(showModal.petid) );
     hideModal()
   }
