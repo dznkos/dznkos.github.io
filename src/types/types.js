@@ -10,6 +10,10 @@ export const types = {
   uiStartLoading: '[UI] Start loading',
   uiFinishLoading: '[UI] Finish loading',
 
+  //Error Pet New
+  uiSetError:'[UI] Set Error',
+  uiRemoveError:'[UI] Remove Error',
+
   //Validate token
   authCheckingFinish: '[auth] Finish checking login state',  
   authStartTokenRenew: '[auth] Start token renew',
@@ -18,6 +22,8 @@ export const types = {
   petStartAdd: '[pet] Start Add pet',
   petUpdate: '[pet] Update pet',
   petLoaded: '[pet] Loaded',
+
+  petLoadTypes: '[pet] Load Types',
 
   petLoadImage: '[pet] Load Image',
 

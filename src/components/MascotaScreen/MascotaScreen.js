@@ -5,7 +5,7 @@ import  { TrashAlt} from '@styled-icons/fa-solid/TrashAlt';
 import { Pencil } from '@styled-icons/boxicons-solid/Pencil';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { petDelete, petsStartLoading, petClearActive } from '../../actions/pets';
+import { petDelete, petsStartLoading, petClearActive, petGetTypes } from '../../actions/pets';
 import { CustomModal } from '../ModalAlert/ModalAlert';
 
 export const MascotaScreen = () => {
@@ -32,7 +32,7 @@ export const MascotaScreen = () => {
     dispatch( petDelete(showModal.petid) );
     hideModal()
   }
-
+  
   useEffect(() => {
 
     dispatch(petClearActive())
@@ -43,8 +43,9 @@ export const MascotaScreen = () => {
   useEffect(() => {
     
     dispatch( petsStartLoading() );    
+    dispatch( petGetTypes() );
 
-  }, [dispatch ]) 
+  }, [dispatch, petsStartLoading ]) 
   
   return (
     <Container>

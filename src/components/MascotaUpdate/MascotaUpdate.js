@@ -15,7 +15,8 @@ export const MascotaUpdate = () => {
   const location = useLocation()
   const { mypet } = location.state
   
-  const { active } = useSelector( state => state.pets)
+  const { active, tps } = useSelector( state => state.pets)
+  const { msgError } = useSelector( state => state.ui)
 
   const dispatch = useDispatch();
 
@@ -31,7 +32,7 @@ export const MascotaUpdate = () => {
     age: mypet.age,
     description: mypet.description,
     image_url: mypet.image_url,
-    pet_type_id: "627ed00805be0bce81adba20"
+    pet_type_id: mypet.pet_type_id
   }
 
   const [ formValues, handleInputChange, reset ] = useForm(preloadedValues);
@@ -86,15 +87,22 @@ export const MascotaUpdate = () => {
             onChange={ handleInputChange }
           />
           <Select            
-            // name='pet_type_id'
-            // value={ pet_type_id }
-            // onChange={ handleInputChange }
-            >
-              <option value="" hidden>
-                Tipos de Mascotas
-              </option>
-              <option value="1">Perro</option>
-              <option value="2">Gato</option>
+                name='pet_type_id'
+                value={ pet_type_id }
+                onChange={ handleInputChange }
+                >
+                  <option value="" hidden>
+                    Tipos de Mascotas
+                  </option>
+          {
+            
+            tps?.map( (tipo, i)=> (
+              <option key={ tipo._id }
+                      value={ tipo._id }>
+                {tipo.name}
+              </option>              
+            ))
+          }
           </Select>
           <Input     
             width="100%"

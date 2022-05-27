@@ -32,6 +32,12 @@ export const petReducer = ( state = initialState, action ) => {
         ...state,
         pets: [...action.payload ]
       }
+
+    case types.petLoadTypes:
+      return {
+        ...state,
+        tps: [...action.payload] 
+      }
   
     default:
       return state;

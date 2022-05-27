@@ -103,6 +103,30 @@ const petLoaded = ( pets ) => ({
   payload: pets
 })
 
+export const petGetTypes = () => {
+
+  return async(dispatch) => {
+
+    const resp = await fetchConToken('types/');
+    const body = await resp.json();
+
+    console.log( body );
+
+    if ( body.ok ) {
+      const types = body.petsTypes
+      console.log(types);
+      dispatch( petLoadTypes( types ))
+    }
+
+  }
+
+}
+
+const petLoadTypes = ( typepets ) => ({
+  type: types.petLoadTypes,
+  payload: typepets
+})
+
 const petList = () => ({
   type: types.petStartList,
   active: null
