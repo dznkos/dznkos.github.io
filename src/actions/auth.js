@@ -18,8 +18,17 @@ export const startLoginEmailPassword = ( email, password) => {
           { email, password},
           'POST');      
       const body = await resp.json();
+
+      let codac = 0;
+      console.log(body);
         
       if ( body.ok ){
+        console.log(body.role[0]);
+        if (body.role[0]==="ADMIN") {
+          codac = 1;
+        }
+
+        localStorage.setItem('code', codac)
         localStorage.setItem('token', body.token);
         localStorage.setItem('token-init-date', new Date().getTime() );
         dispatch( login({ 
@@ -47,6 +56,8 @@ export const startChecking = () => {
 
     const resp = await fetchConToken('users/renew');
     const body = await resp.json();
+
+    console.log( body );
         
     if ( body.ok ){
       localStorage.setItem('token', body.token);

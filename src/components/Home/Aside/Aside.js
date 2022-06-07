@@ -4,6 +4,8 @@ import { Container, StyleLi, StyleUl } from './styles'
 
 export const Aside = () => {
 
+  const pcode = localStorage.getItem('code');
+
 
   
   return (
@@ -16,6 +18,15 @@ export const Aside = () => {
         <NavLink to="/mascotas" activeclassname="current" exact="true">
           <li>Mascotas</li>
         </NavLink>
+        {
+          (pcode == 0) 
+          &&
+          <NavLink to="/favoritos" activeclassname="current" exact="true">
+            <li>Favoritos</li>
+          </NavLink>
+
+        }
+
         </StyleUl>
     </Container>
   )

@@ -21,11 +21,11 @@ export const Container = styled.div`
 @media (min-width: 900px) {   
     grid-template: 
         "header header header" 90px             
-        "sidebar main main " auto /
+        "sidebar main main" auto /
         177px   auto   auto;
 
     /* max-width: 1500px; */
-    margin: auto;
+    /* margin: auto; */
 }
 
   > * {

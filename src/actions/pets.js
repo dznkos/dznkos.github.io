@@ -25,9 +25,7 @@ export const petAdd = ( name,
         'POST'
       );   
 
-      const body = await resp.json();
-    
-      console.log(body)
+      const body = await resp.json();    
 
     } catch (error) {
       console.log(error);
@@ -35,25 +33,6 @@ export const petAdd = ( name,
     
   }
 }
-
-// export const petFind = (id) => {
-  
-//   return async(dispatch) => {
-    
-//     const resp = await fetchConToken(`pets/${id}`);
-//     const body = await resp.json();
-
-//     console.log(body)
-
-//     if ( body.ok ) {
-//       const pet = body.pet;
-//       console.log( pet );
-//       dispatch( petUpdatePet(pet) )    
-//     }
-    
-//   }
-
-// }
 
 export const petUpdate = ( pet ) => {
 
@@ -63,21 +42,9 @@ export const petUpdate = ( pet ) => {
       pet    ,
     'PUT');
     const body = await resp.json();
-
-    console.log(body)
-
-    // if ( body.ok ) {
-    //   const pets = body.pets      
-    // }
     
   }
-
 }
-
-// const petUpdatePet = ( pet ) => ({
-//   type: types.petUpdate,
-//   payload: pet
-// })
 
 export const petClearActive = () => ({
   type: types.petClearActive
@@ -110,16 +77,12 @@ export const petGetTypes = () => {
     const resp = await fetchConToken('types/');
     const body = await resp.json();
 
-    console.log( body );
-
     if ( body.ok ) {
-      const types = body.petsTypes
-      console.log(types);
+      const types = body.petsTypes;      
       dispatch( petLoadTypes( types ))
     }
 
   }
-
 }
 
 const petLoadTypes = ( typepets ) => ({
@@ -127,27 +90,13 @@ const petLoadTypes = ( typepets ) => ({
   payload: typepets
 })
 
-const petList = () => ({
-  type: types.petStartList,
-  active: null
-})
-
-
-
-
 export const petDelete = ( id ) => {
 
   return async(dispatch) => {
     
     const resp = await fetchConToken(`pets/${id}`,{},
     'DELETE');
-    const body = await resp.json();
-
-    console.log(body)
-
-    // if ( body.ok ) {
-    //   const pets = body.pets      
-    // }
+    const body = await resp.json();   
     
   }
 }
@@ -159,15 +108,67 @@ const petLoadImage = ( url ) => ({
 
 export const startUploading = ( file ) => {
   return async( dispatch )=>{
-    // const { active: activePet} = getState().pets;
 
     const fileUrl = await fileUpload( file );
-
     dispatch( petLoadImage(fileUrl));
-    
-    console.log( fileUrl )
   }
 }
+
+export const petAddFavorite = (id) => {
+
+  return async( dispatch ) => {
+
+    const resp = await fetchConToken(`favorites/pets/${id}`,{},
+    'POST')
+    const body = await resp.json();
+
+    if( body.ok ){
+      dispatch( petsStartLoading() )
+      console.log(body)
+    }
+  }
+}
+
+export const petRemoveFavorite = (id) => {
+
+  return async( dispatch ) => {
+
+    const resp = await fetchConToken(`favorites/${id}`,
+    {},
+    'DELETE')
+    const body = await resp.json();
+
+    if( body.ok ){
+      dispatch( petsStartLoading() )
+      console.log(body)
+    }
+  }
+}
+
+
+// export const petFind = (id) => {
+  
+//   return async(dispatch) => {
+    
+//     const resp = await fetchConToken(`pets/${id}`);
+//     const body = await resp.json();
+
+//     console.log(body)
+
+//     if ( body.ok ) {
+//       const pet = body.pet;
+//       console.log( pet );
+//       dispatch( petUpdatePet(pet) )    
+//     }
+    
+//   }
+
+// }
+
+const petList = () => ({
+  type: types.petStartList,
+  active: null
+})
 
 
 
