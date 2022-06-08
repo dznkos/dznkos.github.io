@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 
 import { useDispatch, useSelector  } from 'react-redux';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { startChecking } from '../actions/auth';
-import { RegisterScreen } from '../components/auth/register/RegisterScreen';
 import { HomeScreen } from '../components/Home/HomeScreen/HomeScreen';
 import { Main } from '../components/Home/Main/Main';
 import { MascotaGallery } from '../components/MascotaGallery/MascotaGallery';
@@ -56,13 +55,13 @@ export const AppRouter = () => {
         <Route exact path='/mascotas' element={ 
           <PrivateRoute isAuthenticated={ !!uid } >
           {
-          (pcode == 1) 
+          (pcode === 1) 
           ? <HomeScreen children={ <MascotaScreen/> }/> 
           : <HomeScreen children={ <MascotaGallery/> }/> }            
           </PrivateRoute>
         }/>
         {
-          (pcode == 0)
+          (pcode === 0)
           &&
           <Route exact path='/favoritos' element={ 
             <PrivateRoute isAuthenticated={ !!uid } >
