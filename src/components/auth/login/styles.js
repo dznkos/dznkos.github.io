@@ -10,22 +10,22 @@ export const Container = styled.div`
   background-position: center center;
   height: 100vh;
   width: 100vw;
-  
+  position: relative;
 
 `
 
 export const LoginBox = styled.div`
 
-  background-color: white;
-  height: 251px;
-  width: 416px;
+  background-color: rgb(250, 250, 250, 0.15);
+  height: 30%;
+  width: 80%;
   /* margin: 120px 0px 0px 70px; */
   position: absolute;
   box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
 
-  margin-left: 65px;
-  margin-top: 101px;
+  margin-left: 10%;
+  margin-top: 11%;
 
   display: flex;
   flex-direction: column;
@@ -34,15 +34,45 @@ export const LoginBox = styled.div`
   align-content: center;
 
   text-align: center;
+
+  @media (max-width: 480px) { 
+    
+    /* height: 50%; */
+    width: 95%;
+    margin-left: 3%;
+    margin-top: 50%;
+
+  }
+  
+  @media (min-width: 480px) { 
+    
+    height: 251px;
+    width: 326px;
+
+    margin-left: 4%;
+  }
+
+  @media (min-width: 768px) {  
+    height: 271px;
+    width: 446px;
+  }
+
+  @media (min-width: 1024px) {   
+    height: 251px;
+    width: 416px;
+      /* max-width: 1500px; */
+      /* margin: auto; */
+  }
+
   
 `
 export const LoginText = styled.h2`
     
-    height: 29px;
-    margin-top: 15px;
+    width: 100%;
+    padding-bottom: 5px;
     font-size: 1.5rem;
     font-weight: bold;
-    text-align: center;
+    /* text-align: center; */
 `
 
 export const Input = styled.input`
@@ -59,7 +89,7 @@ export const Input = styled.input`
         outline: none;
     }
 
-    width: 345px;
+    width: 100%;
     height: 40px;
 
     ::placeholder {
@@ -84,32 +114,33 @@ export const Input = styled.input`
 `
 
 export const Form = styled.form`
-    /* display: inline-block; */
-    
+    display: inline-block;
+    height: 100%;
+    margin: 40px;
 
 `
 
 export const Error = styled.div`
+
+    width: 100%;
+
     font-style: normal;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 0.57rem;
     line-height: 15px;
     padding: 3px;
-    /* identical to box height */
 
     letter-spacing: -0.017em;
 
     color: #FF0000;
-    margin-left: 35px;
     text-align: start;
 
-    /* display: flex; */
 
 `
 
 export const Button = styled.button`
     
-  width: 345px;
+  width: 100%;
   height: 40px;
 
   background-color: #B6956A;
@@ -118,8 +149,7 @@ export const Button = styled.button`
   color: #FFFFFF;
   font-weight: 700;
   font-size: 1.125rem;
-  line-height: 22px;
-
+  /* line-height: 22px; */
 
   :hover {
 
@@ -129,5 +159,11 @@ export const Button = styled.button`
   :active { 
     background-color: #020100;
   }  
+
+  @media (max-width: 480px) { 
+    
+    background: rgba(231, 172, 24, 0.424);;
+  }
+
 `
 

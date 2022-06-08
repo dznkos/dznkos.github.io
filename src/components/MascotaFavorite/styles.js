@@ -3,16 +3,42 @@ import styled from "styled-components";
 import { ReactComponent as FavoriteIcon } from "../../assets/icons/favorite.svg";
 
 export const Container = styled.div`
+
+  /* display: flex; */
   
   /* height: 100vh; */
-  width: 80%;
-  margin-left: 40px;
+  width: 100%;
+  /* margin-left: 40px; */
+  /* background-color: gray; */ 
+  /* padding-left: 10px;/ */
+
+  text-align: start;
+ 
+  /* padding-left: 40px;
+  padding-top: 40px; */
+
+
+  h1{
+    font-size: 2.2rem;
+    padding-top: 40px;
+    padding-left: 40px;
+  }
+ 
+  div {
+    width: 100%;
+  }
+`
+export const GalleryBox = styled.div`
+  
+  /* height: 100vh; */
+  width: 100%;
+  margin-bottom: 40px;
   /* background-color: gray; */
   
   display: grid;
   /* padding: 0px 10px 0px 10px; */
 
-  grid-template-columns: repeat( 3, 1fr);
+  grid-template-columns: repeat( 1, 1fr);
   grid-column-gap: auto;
   grid-row-gap: auto;
   /* padding: 60px; */
@@ -22,9 +48,27 @@ export const Container = styled.div`
   /* align-content: flex-start; */
   justify-items: center;
 
+  @media (min-width: 480px) { 
+    grid-template-columns: repeat( 1, 1fr);
+  }
+
+  @media (min-width: 768px) {  
+    
+    grid-template-columns: repeat( 2, 1fr);
+  }
+
+  @media (min-width: 1024px) {  
+    grid-template-columns: repeat( 3, 1fr);
+    padding-right: 40px;
+  }
+
   h1 {
     font-size: 2.25rem;
   } 
+
+  div {
+    width: 100%;
+  }
 `
 
 export const BoxMascota = styled.div`

@@ -53,11 +53,12 @@ export const LoginScreen = () => {
     <>
     <Container>
       <LoginBox>
-        <LoginText>Ingresa</LoginText>
+        
         <Form 
         onSubmit={ handleLogin }
         // className='animate__animated animate__fadeIn animate__faster'
         >
+        <LoginText>Ingresa</LoginText>
         <Input          
           type="text"
           placeholder='Correo electronico'

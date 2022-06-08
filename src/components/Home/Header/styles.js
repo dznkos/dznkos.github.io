@@ -51,6 +51,6 @@ export const Logout = styled.button`
   font-size: 18px;  
   line-height: 22px;
   height: 22px;
-  margin-right: 48px;  
+  padding-right: 48px;  
 
 `

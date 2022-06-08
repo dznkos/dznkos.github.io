@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export const Container = styled.div`
   
-  height: 100vh;
+  /* height: 100vh; */
   /* width: 100%; */
   /* background-color: gray; */
   
@@ -13,6 +13,8 @@ export const Container = styled.div`
   flex-direction: column;
 
   align-items: flex-end;
+
+ 
 
   
 
@@ -40,6 +42,10 @@ export const NavLinkStyle = styled(NavLink)`
   align-items: center;
 
   box-shadow: 3px 3px 3px 1px #ccc;
+
+  :hover{
+      background-color: #5f61de;
+    }
 
 `  
 
@@ -77,12 +83,16 @@ export const BoxMascotas = styled.li`
     
   }
 
-  i{
-
-    padding: 4px;
+  a{
+    
+    /* width:30px; */
+    margin: 0px 8px 0px 8px;
     border-radius: 15px;
 
     :active {
+      background-color: #5fdec0;
+    }
+    :hover{
       background-color: #5fdec0;
     }
   }
@@ -92,11 +102,12 @@ export const BoxMascotas = styled.li`
 
 export const Data = styled.div`
   
-  width: 180px;
+  /* width: 180px; */
+  padding: 0px 40px 0px 40px;
 
   display: flex;
 
-  justify-content: space-evenly;
+  /* justify-content: space-evenly; */
 
   h4 {
     font-size: 1.125rem;
@@ -106,6 +117,7 @@ export const Data = styled.div`
   p { 
     font-size: 1.125rem;
     color: #B6956A;
+    padding-right: 15px;
   }
 
 `
@@ -122,7 +134,7 @@ export const ButtonDel = styled.button`
 export const ButtonCancel = styled.button`
   
   width: 30%;   
-  min-height: 40px;
+  min-height: 40px;  
   border-radius: 10px;
   background-color: #B6956A;
   color: white;

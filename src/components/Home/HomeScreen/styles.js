@@ -7,7 +7,7 @@ export const Container = styled.div`
   height: 100vh;
   grid-template: 
         "header" 90px  
-        "sidebar" 120px       
+        "sidebar" auto       
         "main" auto   
         ;
 

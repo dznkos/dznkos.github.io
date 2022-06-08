@@ -64,8 +64,8 @@ export const MascotaScreen = () => {
                   <h4>{ pet.name }</h4>
                 </Data>
                 <Data>
-                  <NavLink to='/update' state={{ mypet: pet}}><i ><Pencil width={ 20 } height={ 20 } color={ '#B6956A' }/></i></NavLink>
-                  <i onClick={ ()=> AlertDeletePet( pet._id ) }><TrashAlt width={ 20 } height={ 20 } color={ 'red' }/></i>        
+                  <a><NavLink to='/update' state={{ mypet: pet}}><Pencil width={ 20 } height={ 20 } color={ '#B6956A' }/></NavLink></a>
+                  <a href="#" onClick={ ()=> AlertDeletePet( pet._id ) }><TrashAlt width={ 20 } height={ 20 } color={ 'red' }/></a>        
                 </Data>
               </li>
 

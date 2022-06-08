@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { BoxMascota, Container, NamePet, PhotoPet, StyledFavoriteIcon } from './styles'
+import { BoxMascota, Container, GalleryBox, NamePet, PhotoPet, StyledFavoriteIcon } from './styles'
 
 import { useDispatch, useSelector } from 'react-redux';
 import { petDelete, petsStartLoading, petClearActive, petGetTypes, petAddFavorite, petRemoveFavorite } from '../../actions/pets';
@@ -47,23 +47,33 @@ export const MascotaFavorite = () => {
   // console.log(pets)
   // console.log(tps)
 
+  const listpets = pets?.filter( (obj) => obj.tagFav == true );
+  console.log(listpets);
+
   return (
-    <Container>      
-    {
-      pets?.filter( (obj) => obj.tagFav == true ).map( (pet, i) => (
-        <BoxMascota key={ pet._id} >
-          <PhotoPet src={pet.image_url} ></PhotoPet>
-          <NamePet>{pet.name} - { tps?.filter( (tp) => (tp._id == pet.pet_type_id) ).map( obj => obj.name )  }</NamePet>
-          
-          <StyledFavoriteIcon 
-            hoverColor={ pet.tagFav ? "black" : "red" } 
-            color={ pet.tagFav ? "red" : "black" }  
-            onClick={ ()=> handleFavorite( pet._id, pet.tagFav )}
-          />
-          
-        </BoxMascota>
-      
-      ))
+    <Container>    
+    {    
+      (listpets.length != 0)
+      ?
+      <GalleryBox>    
+      {
+        listpets.map( (pet, i) => (
+          <BoxMascota key={ pet._id} >
+            <PhotoPet src={pet.image_url} ></PhotoPet>
+            <NamePet>{pet.name} - { tps?.filter( (tp) => (tp._id == pet.pet_type_id) ).map( obj => obj.name )  }</NamePet>
+            <StyledFavoriteIcon 
+              hoverColor={ pet.tagFav ? "black" : "red" } 
+              color={ pet.tagFav ? "red" : "black" }  
+              onClick={ ()=> handleFavorite( pet._id, pet.tagFav )}
+            />          
+          </BoxMascota>      
+        ))
+      }
+      </GalleryBox>    
+      :
+      <div>
+        <h1>Aun no tienes mascotas favoritas.</h1>
+      </div>    
     }
     </Container>
   )
