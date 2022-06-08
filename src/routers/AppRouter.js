@@ -55,13 +55,13 @@ export const AppRouter = () => {
         <Route exact path='/mascotas' element={ 
           <PrivateRoute isAuthenticated={ !!uid } >
           {
-          (pcode === 1) 
+          (pcode == 1) 
           ? <HomeScreen children={ <MascotaScreen/> }/> 
           : <HomeScreen children={ <MascotaGallery/> }/> }            
           </PrivateRoute>
         }/>
         {
-          (pcode === 0)
+          (pcode == 0)
           &&
           <Route exact path='/favoritos' element={ 
             <PrivateRoute isAuthenticated={ !!uid } >
