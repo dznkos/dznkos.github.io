@@ -18,6 +18,8 @@ export const types = {
   authCheckingFinish: '[auth] Finish checking login state',  
   authStartTokenRenew: '[auth] Start token renew',
 
+  authLoadRole: '[auth] Load Role',
+
   //Pets Crud
   petStartAdd: '[pet] Start Add pet',
   petUpdate: '[pet] Update pet',
@@ -28,6 +30,8 @@ export const types = {
   petLoadImage: '[pet] Load Image',
 
   petClearActive: '[pet] Clear Active',
+
+
 
 
   petStartFind: '[pet] Start Find pet',

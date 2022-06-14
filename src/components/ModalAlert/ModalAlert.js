@@ -12,6 +12,7 @@ const ModalDiv = styled.div`
 
 `
 
+
 const ContentDiv = styled.div`
   position: fixed;
   background: white;

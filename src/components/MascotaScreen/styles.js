@@ -6,7 +6,8 @@ export const Container = styled.div`
   
   /* height: 100vh; */
   /* width: 100%; */
-  /* background-color: gray; */
+  background: rgb(20,30,48);
+  background: linear-gradient(90deg, rgba(20,30,48,1) 0%, rgba(36,59,85,1) 100%);
   
   display: flex;
 
@@ -29,6 +30,7 @@ export const NavLinkStyle = styled(NavLink)`
   margin-right: 60px;
 
   background-color: #B6956A;
+  
   border-radius: 12px;
 
   color: white;
@@ -41,7 +43,7 @@ export const NavLinkStyle = styled(NavLink)`
   justify-content: center;
   align-items: center;
 
-  box-shadow: 3px 3px 3px 1px #ccc;
+  box-shadow: 3px 3px 3px 1px #52569b;
 
   :hover{
       background-color: #5f61de;
@@ -51,7 +53,7 @@ export const NavLinkStyle = styled(NavLink)`
 
 export const BoxMascotas = styled.li`
   /* display: inline; */
-  background-color: #ffffff; 
+  /* background-color: #ffffff;  */
   width: 90%;
   height: 100%;
 
@@ -76,10 +78,10 @@ export const BoxMascotas = styled.li`
     /* width: 880px; */
     height: 80px;
     border-radius: 12px;
-    background-color: #ffffff;
+    background-color: #2b274a;
 
     margin-bottom: 15px;
-    box-shadow: 3px 3px 5px 1px #ccc;
+    box-shadow: 3px 3px 5px 1px #4f4692;
     
   }
 

@@ -15,7 +15,7 @@ export default createGlobalStyle`
   --text3: #3c4ac6;
   --textColor1: #B6956A;
   --textTitle:#7184f3;
-  --textAbout: #5e98ef;
+  --textAbout: #3de3bf;
   --textArticle: #2b65ca;
   
   --green: #00a650;
@@ -52,7 +52,7 @@ h1, h2, h3, h4, h5, h6 {
 
 html{
   min-height: 100%;
-  /* background-color: var(--fondo); */
+  background-color: var(--white);
 
 }
 

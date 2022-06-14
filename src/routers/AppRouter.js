@@ -18,12 +18,11 @@ import { PublicRoute } from './PublicRoute';
 export const AppRouter = () => {
 
   const dispatch = useDispatch();
-  const { checking, uid} = useSelector( state => state.auth );
+  const { checking, uid, role} = useSelector( state => state.auth );
 
   const pcode = localStorage.getItem('code');
 
-  // console.log(pcode);
-
+  console.log(pcode);
 
   useEffect(() => {
     dispatch(startChecking())  
@@ -55,13 +54,13 @@ export const AppRouter = () => {
         <Route exact path='/mascotas' element={ 
           <PrivateRoute isAuthenticated={ !!uid } >
           {
-          (pcode == 1) 
+          (role == "ADMIN") 
           ? <HomeScreen children={ <MascotaScreen/> }/> 
           : <HomeScreen children={ <MascotaGallery/> }/> }            
           </PrivateRoute>
         }/>
         {
-          (pcode == 0)
+          (role == "USER") 
           &&
           <Route exact path='/favoritos' element={ 
             <PrivateRoute isAuthenticated={ !!uid } >

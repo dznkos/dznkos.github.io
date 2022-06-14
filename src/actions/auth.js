@@ -1,6 +1,5 @@
 
 
-
 import { fetchConToken, fetchSinToken } from '../api/fetch';
 import { types } from '../types/types'
 import { finishLoading, startLoading } from './ui';
@@ -18,17 +17,14 @@ export const startLoginEmailPassword = ( email, password) => {
           { email, password},
           'POST');      
       const body = await resp.json();
-
-      let codac = 0;
       console.log(body);
         
-      if ( body.ok ){
-        console.log(body.role[0]);
-        if (body.role[0]==="ADMIN") {
-          codac = 1;
-        }
+      if ( body.ok ){        
 
-        localStorage.setItem('code', codac)
+        // localStorage.setItem('code', true)
+        dispatch( loadRole( body.role[0] ) );
+        
+        
         localStorage.setItem('token', body.token);
         localStorage.setItem('token-init-date', new Date().getTime() );
         dispatch( login({ 
@@ -116,4 +112,17 @@ export const startLogout = () => {
 const logout = () => ({
   type: types.logout
 
+})
+
+export const loadRole = (userRole) => {
+  return ( dispatch ) => { 
+  dispatch( setRole(userRole) );
+  }
+}
+
+const setRole = (userRole) => ({
+  type: types.authLoadRole,
+  payload: {
+    role: userRole
+  }
 })

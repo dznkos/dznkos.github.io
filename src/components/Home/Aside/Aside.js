@@ -1,10 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { Container, StyleLi, StyleUl } from './styles'
+import { useSelector  } from 'react-redux';
+import { Container, StyleUl } from './styles'
 
 export const Aside = () => {
 
-  const pcode = localStorage.getItem('code');
+  const { role} = useSelector( state => state.auth );
 
 
   
@@ -19,7 +20,7 @@ export const Aside = () => {
           <li>Mascotas</li>
         </NavLink>
         {
-          (pcode == 0) 
+          (role == "USER") 
           &&
           <NavLink to="/favoritos" activeclassname="current" exact="true">
             <li>Favoritos</li>
